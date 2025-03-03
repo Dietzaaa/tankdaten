@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Tankdaten.Models.TankdatenViewModel>
+
+@{
+    ViewData["Title"] = "Tankdaten-Diagramm";
+}
+
+<script type="text/javascript">
+    function assigndata(){
+        $("#chart").igDataChart({
+            dataSource: model
+        })
+    }
+
+    $(function (){
+        $("#chart").igDataChart({
+            width: "100%",
+            height: "500px",
+            title: "Tankdaten",
+            axes: [{
+                name: "xAxis",
+                type: "categorieX",
+                label: "Label"
+            },{
+            name: "yAxis",
+            type: "numericY"
+            }],series: [{
+                    name: "series1",
+                    title: "Test Series",
+                    type: "line",
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "Value",
+                    showTooltip: true,
+                    isTransitionInEnabled: true,
+                    isHighlightingEnabled: true,
+                    tooltipTemplate: "tooltipTemplate"
+                }],
+                horizontalZoomable: true,
+                verticalZoomable: true,
+                windowResponse: "immediate"
+            });
+
+            $(document).on("igdatachartrefreshcompleted", "#chart", function () {
+                if (startTime) {
+                    var time = new Date().getTime() - startTime;
+                    $("#timeText").text(time.toString() + " ms");
+                    startTime = null;
+                }
+            });
+
+            assigndata();
+        });
+</script>
+<h2>Tankdaten-Diagramm</h2>
+
+
+
+<div style="height:500px; width:90%">
+    <div id="chart">
+
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model Tankdaten.Models.TankdatenViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TankdatenViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fahrzeug)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fahrzeug)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GetanktAm)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GetanktAm)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kosten)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kosten)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
